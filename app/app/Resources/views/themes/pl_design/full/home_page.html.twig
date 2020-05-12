@@ -1,9 +1,7 @@
 {% extends 'themes/pl_design/pl_layout.html.twig' %}
 
 {% block content %}
-    <div class="col-xs-10 col-xs-offset-1 text-justified">
-        {{ render( controller( "AppBundle:HomePage:getLandingPage", {'location': location, 'request': app.request} ) ) }}
-    </div>
+    {% include 'full/home_page.html.twig' %}
 
     <div id="landing_page"></div>
     {{ encore_entry_script_tags('landing_page') }}
