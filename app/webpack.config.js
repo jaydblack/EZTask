@@ -13,10 +13,17 @@ Encore.setOutputPath('web/assets/build')
     .enableSingleRuntimeChunk();
 
 // Put your config here.
-
+Encore
+    .addEntry('landing_page', './web/assets/js/landing_page.js')
+    .configureBabel((babelConfig) => {
+        babelConfig.plugins.push('transform-class-properties');
+    }, {
+        useBuiltIns: 'usage',
+        corejs: 3
+    })
 // uncomment the two lines below, if you added a new entry (by Encore.addEntry() or Encore.addStyleEntry() method) to your own Encore configuration for your project
-// const projectConfig = Encore.getWebpackConfig();
-// module.exports = [ eZConfig, ...customConfigs, projectConfig ];
+const projectConfig = Encore.getWebpackConfig();
+module.exports = [ eZConfig, ...customConfigs, projectConfig ];
 
 // comment-out this line if you've uncommented the above lines
-module.exports = [ eZConfig, ...customConfigs ];
+// module.exports = [ eZConfig, ...customConfigs ];
