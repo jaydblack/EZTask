@@ -1,3 +1,6 @@
+imports:
+    - { resource: views.yml }
+
 ezpublish:
     # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'http' you can point it to Varnish
     http_cache:
@@ -13,9 +16,9 @@ ezpublish:
 
     # Siteaccess configuration, with one siteaccess per default
     siteaccess:
-        list: [site, admin]
+        list: [site, admin, pl, en]
         groups:
-            site_group: [site]
+            site_group: [site, pl, en]
 
             # WARNING: Do not remove or rename this group.
             # It's used to distinguish common siteaccesses from admin ones.
@@ -45,8 +48,8 @@ ezpublish:
                 purge_servers: ['%purge_server%']
                 varnish_invalidate_token: '%varnish_invalidate_token%'
 
-        #site_group:
-        #    design: main
+        site_group:
+            design: site_design
 
         admin_group:
             # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
@@ -65,11 +68,27 @@ ezpublish:
                 media: /1/43/
 
         site:
-            languages: [eng-GB]
+            languages:
+                - eng-GB
+        pl:
+            design: pl_design
+            languages:
+                - pol-PL
+                - eng-GB
+        en:
+            design: en_design
+            languages:
+                - eng-GB
 
     url_alias:
         slug_converter:
             transformation: 'urlalias_lowercase'
+
+ezdesign:
+    design_list:
+        site_design: [site_design]
+        pl_design: [pl_design]
+        en_design: [en_design]
 
 ez_platform_standard_design:
     # makes Kernel default templates (in EzPublishCoreBundle/Resources/views) part of standard Design

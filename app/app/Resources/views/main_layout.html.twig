@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="eZ Platform Task">
+
+    <title>eZ Platform Task</title>
+
+    {% stylesheets 'assets/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" id="total-navbar">
+        <div class="container">
+        </div>
+    </nav>
+
+    <header class="below-navbar">
+        <div class="container">
+            <div class="row" id="banner">
+                <div class="col-xs-12">
+                    <div class="banner-header-block">
+                        {% block banner %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="row regular-content-size">
+                <div class="col-xs-12 box-style">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-color-one">
+        </div>
+        <div class="footer-color-two">
+            <div class="container">
+                <div class="row regular-content-size">
+                    <div class="col-xs-8 col-xs-offset-2 footer-links-block">
+                        <ul class="list-inline footer-links"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-color-three">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p class="small">Website design &#38; content © copyright {{ "now"|date("Y") }} Blep inc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% javascripts %}
+    {% endjavascripts %}
+
+</body>
+</html>

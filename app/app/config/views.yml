@@ -1,0 +1,9 @@
+ezpublish:
+  system:
+    site_group:
+      content_view:
+        full:
+          home_page:
+            template: '@ezdesign\full\home_page.html.twig'
+            match:
+              Id\Location: 2
