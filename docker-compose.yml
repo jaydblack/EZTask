@@ -23,6 +23,7 @@ services:
       MYSQL_DATABASE: ${SYMFONY_DB_NAME}
       MYSQL_USER: ${SYMFONY_DB_USER}
       MYSQL_PASSWORD: ${SYMFONY_DB_PASS}
+      MYSQL_ROOT_HOST: '%'
     ports:
       - ${DB_PORT}:3306
 

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+cp .env.dist .env
+
+cp app/.env.dist app/.env
+docker-compose up -d --build
+
+./dev/bin/exec app composer install
+./dev/bin/exec app composer ezplatform-install
+
+DB_ROOT_PASS=$(grep DB_ROOT_PASS .env | cut -d '=' -f 2-)
+SYMFONY_DB_NAME=$(grep SYMFONY_DB_NAME .env | cut -d '=' -f 2-)
+
+# Performing a dump:
+#./dev/bin/exec db mysqldump --databases ${SYMFONY_DB_NAME} -u root --password=${DB_ROOT_PASS} --no-create-db  > docker/db/dump.sql
+
+# Importing a dump
+./dev/bin/exec -T db mysql -u root --password=${DB_ROOT_PASS} < docker/db/dump.sql
+
+# Install assets
+./dev/bin/exec app yarn encore prod
