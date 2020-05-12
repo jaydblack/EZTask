@@ -10,11 +10,11 @@ parameters:
     # Settings for database backend used by Doctrine DBAL
     # In turn used for default storage engine & default search engine (if legacy is configured as search engine)
     env(DATABASE_DRIVER): pdo_mysql
-    env(DATABASE_HOST): '%env(resolve:DATABASE_HOST)%'
-    env(DATABASE_PORT): '%env(resolve:DATABASE_PORT)%'
-    env(DATABASE_NAME): '%env(resolve:DATABASE_NAME)%'
-    env(DATABASE_USER): '%env(resolve:DATABASE_USER)%'
-    env(DATABASE_PASSWORD): '%env(resolve:DATABASE_PASSWORD)%'
+    env(DATABASE_HOST): db
+    env(DATABASE_PORT): 3306
+    env(DATABASE_NAME): symfony
+    env(DATABASE_USER): symfony
+    env(DATABASE_PASSWORD): symfonydbpass
     env(DATABASE_CHARSET): utf8mb4
     env(DATABASE_COLLATION): utf8mb4_unicode_520_ci
     env(DATABASE_VERSION): mariadb-10.2.26
