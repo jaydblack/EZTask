@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Actions;
 
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\LocationService;
@@ -14,7 +14,7 @@ use eZ\Publish\Core\Pagination\Pagerfanta\LocationSearchAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Component\HttpFoundation\Request;
 
-class HomePageController extends Controller
+class HomePageAction extends Controller
 {
     /** @var SearchService **/
     private $searchService;
@@ -25,13 +25,12 @@ class HomePageController extends Controller
         $this->searchService = $searchService;
     }
 
-    public function getLandingPageAction(Request $request, Location $location)
+    public function __invoke()
     {
        return $this->render(
             'full/landing_page.html.twig',
             [
-                'landing_page' => $this->findLandingPage(),
-                'location' => $location
+                'landing_page' => $this->findLandingPage()
             ]
         );
     }
